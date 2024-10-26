@@ -6,7 +6,8 @@
 
 body{
     height: 100vh;
-    background-color: darkslateblue;
+    background-color: rgb(91, 78, 180);
+    padding-bottom: 20px;
 }
 
 
@@ -14,9 +15,7 @@ body{
     background-color: rgb(0, 0, 0);
     color: white;
 }
-#home-pagebtn{
-    /* background-color: blue; */
-}
+
 
 
 
@@ -61,6 +60,8 @@ h1{
     gap: 30px;
 }
 
+
+
 .innerCards{
     height: 170px;
     width: 200px;
@@ -101,7 +102,8 @@ h1{
     /* all: unset; */
     font-size: 17px;
     padding: 15px;
-    margin: 20px;
+    /* padding-top: 40; */
+    margin-top: 15px;
     border-radius: 8px;;
     border: none;
     /* background-color: burlywood; */
@@ -226,7 +228,7 @@ h1{
 #city-data{
 
 font-size: 30px;
-margin: 10px;
+margin:10px ;
 color: white;
 
 
@@ -261,3 +263,53 @@ color: white;
     border-radius: 10px;
     /* border: 1px solid black; */
 }
+
+
+/* errorpage */
+.error-page{
+    display: none;
+}
+
+
+.error-page.active{
+    display: flex;
+    flex-direction: column;
+   
+    justify-content: center;
+    align-items: center;   
+    color: white;
+    font-size: 20px;
+}
+
+#error-text{
+    /* background-color: black; */
+    font-size: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+#error-gif{
+    height: 300px;
+    width: 400px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .cards {
+     grid-template-columns: repeat(1, 1fr);
+     grid-template-rows: repeat(3, 1fr);
+    }
+ 
+    .pagebutton{
+     display: flex;
+     
+    grid-gap: 100px;
+ }
+ 
+ .innerCards{
+     height: 180px;
+     width: 500px;
+ }
+ 
+   }
