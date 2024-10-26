@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<header>
+
+    <div class="header">
+
+       <div><h1>WEATHER APP</h1></div> 
+       <div  class="pagebutton" >
+
+        <button class="pagebtn" id="home-pagebtn" >Your Weather</button>
+        
+        <button class="pagebtn"  id="search-pagebtn" >Search Weather</button>
+       </div>
+    
+    </div>
+</header>
+
+<!-- creation of search page  -->
+
+
+<div class="search-page"  id="sp">
+
+    <input type="text" placeholder="Search your city name here " id="search-bar">
+    
+    
+    
+    <button class="search-btn" id="search-city" ><img src="images/search.png" id="search-icon">
+    </button>
+    
+    
+    </div>
+
+
+<div class="weather-page" id="wp" >
+   
+
+  
+
+    <div class="city">
+        <p id="city-data"></p>
+        <img src="" id="country-icon">
+    </div>
+
+    <div class="wheather-condition">
+        <p id="wheather-type" ></p>
+        <img src="" alt="" id="wheather-icon">
+        <h1 id="temperature"></h1>
+    </div>
+
+    
+
+    <div class="cards">
+
+        <div class="innerCards" >
+            <img src="images/wind.png" alt="" class="cards-icon">
+            <h2>WINDSPEED</h2>
+            <p class="card-text"  id="wind" ></p>
+        </div>
+
+        <div class="innerCards" >
+            <img src="images/humidity.png" alt="" class="cards-icon">
+            <h2>HUMIDITY</h2>
+            <p  class="card-text" id="humidity"></p>
+        </div>
+
+        <div class="innerCards" >
+            <img src="images/clouds.png" alt="" class="cards-icon">
+            <h2>CLOUDS</h2>
+            <p class="card-text"  id="clouds" ></p>
+        </div>
+
+
+    </div>
+</div>
+
+<!-- end wheather app -->
+
+
+
+<!-- grant location access -->
+
+<div class="location-page" id="locationpage">
+
+
+<img src="images/location.png" id="location-icon">
+
+
+<div class="location-para">
+
+<p>Grant location Acesss</p>
+<p>Allow to get weather Information</p>
+
+
+</div>
+
+<button id="location-btn">Grant Access</button>
+<p id="message"></p>
+
+</div>
+
+
+<!-- loading page  -->
+
+<div class="loading-conatiner" id="loadingconatiner">
+
+    <img  id="loading-gif"  src="images/loading.gif">
+    <h1>Loading ...</h1>
+</div>
+
+
+<script src="index.js"></script>
+</body>
+</html>
