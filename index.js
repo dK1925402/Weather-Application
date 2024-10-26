@@ -3,6 +3,8 @@ const searchpage = document.getElementById('sp');
 const weatherpage = document.getElementById('wp');
 const loadingpage = document.getElementById('loadingconatiner');
 const locationpage = document.getElementById('locationpage');
+const errorpage = document.getElementById("ep");
+
 
 //header
 const searchbtn = document.getElementById('search-pagebtn');
@@ -47,16 +49,19 @@ function changepage(page){
 
 
 function yourpage(){
- 
+
+
  getLocation();
   weatherpage.classList.add('active');
   searchpage.classList.remove('active');
+  errorpage.classList.remove('active');
 }
 
 function searchpagebtn(){
   weatherpage.classList.remove('active')
   searchpage.classList.add('active');
   locationpage.classList.remove('active')
+  errorpage.classList.remove('active');
 }
 
 homebtn.addEventListener("click", ()=>{
@@ -86,7 +91,8 @@ function definedata(data){
 
   city.innerText = data?.name;
   wheather.innerText = data?.weather?.[0]?.description;
-  temperature.innerText = data?.main?.temp;
+  const tempkelvin = data?.main?.temp;
+  temperature.innerText = (tempkelvin - 273.15).toFixed(2) + " °C" ;
 
   wind.innerText= data?.wind?.speed + " m/s" ;
   humidity.innerText = data?.main?.humidity + " %";
@@ -116,9 +122,25 @@ loadingpage.classList.remove('active')
 weatherpage.classList.add('active')
 
 
-definedata(data); 
+if(data?.message === "city not found"){
+  console.log("mera error ");
+
+  weatherpage.classList.remove('active');
+  errorpage.classList.add('active');
 
 }
+else{
+  errorpage.classList.remove('active');
+definedata(data);}
+
+}
+
+
+// catch(error){
+//   console.log("mera error ");
+// }
+
+
 
 
 
