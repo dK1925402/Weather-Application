@@ -48,6 +48,7 @@ function changepage(page){
 
 function yourpage(){
  
+ getLocation();
   weatherpage.classList.add('active');
   searchpage.classList.remove('active');
 }
