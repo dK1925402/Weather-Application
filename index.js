@@ -55,6 +55,7 @@ if (permission == 'deny'){
   locationpage.classList.add("active");
   weatherpage.classList.remove('active');
   searchpage.classList.remove('active');
+    errorpage.classList.remove('active');
 }
 
   
