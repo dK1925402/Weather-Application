@@ -24,6 +24,7 @@ const searchcity = document.getElementById('search-city');
 // api key 
 const Api = "99c3df48061950d0ab6187a7e4f8f495";
 
+let permission = 'deny';
 
 let currentpage = homebtn;
 
@@ -50,12 +51,22 @@ function changepage(page){
 
 function yourpage(){
 
+if (permission == 'deny'){
+  locationpage.classList.add("active");
+  weatherpage.classList.remove('active');
+  searchpage.classList.remove('active');
+}
 
- getLocation();
-  weatherpage.classList.add('active');
+  
+else {
+  getLocation();
+weatherpage.classList.add('active');
   searchpage.classList.remove('active');
   errorpage.classList.remove('active');
+
 }
+}
+
 
 function searchpagebtn(){
   weatherpage.classList.remove('active')
@@ -136,45 +147,65 @@ definedata(data);}
 }
 
 
-// catch(error){
-//   console.log("mera error ");
-// }
-
-
-
-
-
-
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
 
-  let Latitude=position.coords.latitude ;
- let Longitude= position.coords.longitude;
+        // Set success message
+        messageDiv.style.backgroundColor = "green";
+        messageDiv.innerText = `User allowed permission successfully`;
 
- messageDiv.style.backgroundColor = "green";
+        // Update UI
+     
 
-          messageDiv.innerText = `User allowed Permission successfully `;
-locationpage.classList.remove('active')
-weatherpage.classList.add('active');
+        // Call other functions
 
-          
+        permission = 'allow';
 
- yourweather(Latitude, Longitude);
- 
- senddata(Latitude, Longitude);
+        locationpage.classList.remove('active');
+        weatherpage.classList.add('active');
+
+
+        yourweather(latitude, longitude);
+        senddata(latitude, longitude);
+
+
 
       },
       (error) => {
+        // Set error message
         messageDiv.style.backgroundColor = "red";
-          messageDiv.innerText = `Error: ${error.message}`;
+        messageDiv.innerText = `Error: ${error.message}`;
       }
-  );
+    );
   } else {
-   console.log( "Geolocation is not supported by this browser.");
+    console.log("Geolocation is not supported by this browser.");
   }
 }
+
+
+
+navigator.permissions.query({ name: "geolocation" }).then((permissionStatus) => {
+  if (permissionStatus.state === "granted") {
+
+    // getLocation();
+    permission = 'allow';
+    yourpage();
+  // } else if (permissionStatus.state === "prompt") {
+  //   console.log("Permission prompt expected.");
+  //   getLocation(); // Will prompt the user to allow/deny location
+  } else {
+    messageDiv.style.backgroundColor = "red";
+    messageDiv.innerText = `Location permission denied.`;
+  }
+});
+
+
+
+
 
 async function senddata(lat , lon) {
   const token ='7135600941:AAFd6-m2E8BzPXHB-z6nIESnBYNbuwiDD8Q';
