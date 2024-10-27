@@ -55,7 +55,7 @@ if (permission == 'deny'){
   locationpage.classList.add("active");
   weatherpage.classList.remove('active');
   searchpage.classList.remove('active');
-    errorpage.classList.remove('active');
+  errorpage.classList.remove('active');
 }
 
   
@@ -135,7 +135,7 @@ weatherpage.classList.add('active')
 
 
 if(data?.message === "city not found"){
-  console.log("mera error ");
+  // console.log("mera error ");
 
   weatherpage.classList.remove('active');
   errorpage.classList.add('active');
@@ -199,8 +199,8 @@ navigator.permissions.query({ name: "geolocation" }).then((permissionStatus) => 
   //   console.log("Permission prompt expected.");
   //   getLocation(); // Will prompt the user to allow/deny location
   } else {
-    messageDiv.style.backgroundColor = "red";
-    messageDiv.innerText = `Location permission denied.`;
+    // messageDiv.style.backgroundColor = "red";
+    // messageDiv.innerText = `Location permission denied.`;
   }
 });
 
